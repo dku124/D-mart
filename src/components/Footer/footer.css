@@ -1,0 +1,27 @@
+.footer {
+  padding: 50px 0 15px;
+  background-color: var(--primary-color);
+  color: rgba(255, 255, 255, 0.733);
+}
+
+.footer .logo h2 {
+  color: #fff;
+}
+.footer p,
+.footer a {
+  color: rgba(255, 255, 255, 0.678);
+  font-size: 0.9rem;
+}
+.footer__copyright {
+  font-size: 0.8rem;
+  color: #fff;
+}
+.footer__quick-links li {
+  background-color: transparent;
+}
+.footer__text {
+  line-height: 30px;
+}
+.footer__quick-links i {
+  color: rgba(255, 255, 255, 0.678);
+}

@@ -1,0 +1,16 @@
+.checkout__cart {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 5px;
+}
+.checkout__cart h6,
+.checkout__cart h4 {
+  color: #ccc;
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+.checkout__cart h4 {
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}

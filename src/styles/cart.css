@@ -1,0 +1,16 @@
+.table {
+  table-layout: fixed;
+}
+.table img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+td span {
+  cursor: pointer;
+  padding: 10px;
+}
+.table td {
+  vertical-align: middle;
+}

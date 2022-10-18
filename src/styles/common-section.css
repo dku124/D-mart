@@ -1,0 +1,8 @@
+.common__section {
+  background-color: var(--primary-color);
+}
+.common__section h1 {
+  font-weight: 600;
+  color: #fff;
+  font-size: 5rem;
+}
