@@ -3,17 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row, Col, Table } from 'reactstrap';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
-
-import '../styles/cart.css';
-
 import { motion } from 'framer-motion';
 import { cartActions } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
 
+import '../styles/cart.css';
+
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-
+  console.log('cádfks' + cartItems);
   return (
     <Helmet title="cart">
       <CommonSection title="Shopping Cart" />

@@ -11,8 +11,8 @@ import '../styles/cart.css';
 const Favorite = () => {
   const cartItemsFavotite = useSelector((state) => state.cart.cartItemsFavotite);
   const totalAmountFavorite = useSelector((state) => state.cart.totalAmountFavorite);
-  const totalPrice = useSelector((state) => state.cart.totalPrice);
 
+  console.log(cartItemsFavotite);
   return (
     <Helmet title="Favorite">
       <CommonSection title="My favorite" />

@@ -10,6 +10,16 @@ const initialState = {
   totalQuantityFavorite: 0, //số lượng sản phẩm yêu thích
 };
 
+// let initialState = JSON.parse(localStorage.getItem('item')) || {
+//   cartItems: [],
+//   totalAmount: 0, // tổng tiền
+//   totalQuantity: 0, //số lượng sản phẩm
+
+//   cartItemsFavotite: [],
+//   totalAmountFavorite: 0, // tổng tiền favorite
+//   totalQuantityFavorite: 0, //số lượng sản phẩm yêu thích
+// };
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -39,13 +49,22 @@ export const cartSlice = createSlice({
         existingItem.totalPrice = Number(existingItem.totalPrice) + Number(newItem.price);
       }
       state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+
+      // localStorage.setItem(
+      //   'item',
+      //   JSON.stringify({
+      //     cartItems: state.cartItems,
+      //     totalAmount: state.totalAmount,
+      //     totalQuantity: state.totalQuantity,
+      //   }),
+      // );
     },
 
     favoriteItem: (state, action) => {
       const newItem = action.payload; // payload chứa các thông tin của newItem sẽ được sử lý bằng action
-      const existingItem = state.cartItemsFavotite.find((item) => item.id === newItem.id);
+      const existingItemFavorite = state.cartItemsFavotite.find((item) => item.id === newItem.id);
       state.totalQuantityFavorite++;
-      if (!existingItem) {
+      if (!existingItemFavorite) {
         state.cartItemsFavotite.push({
           id: newItem.id,
           productName: newItem.productName,
@@ -55,11 +74,49 @@ export const cartSlice = createSlice({
           totalPrice: newItem.price,
         });
       } else {
-        existingItem.quantity++;
-        existingItem.totalPrice = Number(existingItem.totalPrice) + Number(newItem.price);
+        existingItemFavorite.quantity++;
+        existingItemFavorite.totalPrice = Number(existingItemFavorite.totalPrice) + Number(newItem.price);
       }
       state.totalAmountFavorite = state.cartItemsFavotite.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+
+      // localStorage.setItem(
+      //   'item',
+      //   JSON.stringify({
+      //     cartItemsFavotite: state.cartItemsFavotite,
+      //     totalAmountFavorite: state.totalAmountFavorite,
+      //     totalQuantityFavorite: state.totalQuantityFavorite,
+      //   }),
+      // );
     },
+
+    // favoriteItem: (state, action) => {
+    //   const newItem = action.payload; // payload chứa các thông tin của newItem sẽ được sử lý bằng action
+    //   const existingItem = state.cartItemsFavotite.find((item) => item.id === newItem.id);
+    //   state.totalQuantityFavorite++;
+    //   if (!existingItem) {
+    //     state.cartItemsFavotite.push({
+    //       id: newItem.id,
+    //       productName: newItem.productName,
+    //       imgUrl: newItem.imgUrl,
+    //       price: newItem.price,
+    //       quantity: 1,
+    //       totalPrice: newItem.price,
+    //     });
+    //   } else {
+    //     existingItem.quantity++;
+    //     existingItem.totalPrice = Number(existingItem.totalPrice) + Number(newItem.price);
+    //   }
+    //   state.totalAmountFavorite = state.cartItemsFavotite.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+
+    //   localStorage.setItem(
+    //     'item',
+    //     JSON.stringify({
+    //       cartItemsFavotite: state.cartItemsFavotite,
+    //       totalAmountFavorite: state.totalAmountFavorite,
+    //       totalQuantityFavorite: state.totalQuantityFavorite,
+    //     }),
+    //   );
+    // },
 
     deleteItem: (state, action) => {
       const id = action.payload;
@@ -70,17 +127,35 @@ export const cartSlice = createSlice({
         state.totalQuantity = state.totalQuantity - existingItem.quantity;
       }
       state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+
+      // localStorage.setItem(
+      //   'item',
+      //   JSON.stringify({
+      //     cartItems: state.cartItems,
+      //     totalAmount: state.totalAmount,
+      //     totalQuantity: state.totalQuantity,
+      //   }),
+      // );
     },
 
     deleteItemFavorite: (state, action) => {
       const id = action.payload;
-      const existingItem = state.cartItemsFavotite.find((item) => item.id === id);
+      const existingItemFavorite = state.cartItemsFavotite.find((item) => item.id === id);
 
-      if (existingItem) {
+      if (existingItemFavorite) {
         state.cartItemsFavotite = state.cartItemsFavotite.filter((item) => item.id !== id);
-        state.totalQuantityFavorite = state.totalQuantityFavorite - existingItem.quantity;
+        state.totalQuantityFavorite = state.totalQuantityFavorite - existingItemFavorite.quantity;
       }
       state.totalAmountFavorite = state.cartItemsFavotite.reduce((total, item) => total + Number(item.price) * Number(item.quantity), 0);
+
+      // localStorage.setItem(
+      //   'item',
+      //   JSON.stringify({
+      //     cartItemsFavotite: state.cartItemsFavotite,
+      //     totalAmountFavorite: state.totalAmountFavorite,
+      //     totalQuantityFavorite: state.totalQuantityFavorite,
+      //   }),
+      // );
     },
   },
 });
