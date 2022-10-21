@@ -54,7 +54,7 @@ const Shop = () => {
         <Container>
           <Row>
             <Col lg="3" md="3">
-              <div className="filter__widget">
+              <div className="filter__widget mt-2">
                 <select onChange={handleFilter}>
                   <option>Filter by Category</option>
                   <option value="sofa">Sofa</option>
@@ -66,7 +66,7 @@ const Shop = () => {
               </div>
             </Col>
             <Col lg="3" md="6">
-              <div className="filter__widget">
+              <div className="filter__widget mt-2">
                 <select>
                   <option>Sort by</option>
                   <option value="ascending">Ascending</option>
@@ -75,7 +75,7 @@ const Shop = () => {
               </div>
             </Col>
             <Col lg="6" md="6">
-              <div className="search__box">
+              <div className="search__box mt-2">
                 <input type="text" placeholder="Search..." onChange={handleSearch} />
                 <span>
                   <i class="ri-search-line"></i>
