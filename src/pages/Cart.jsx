@@ -12,7 +12,6 @@ import '../styles/cart.css';
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
-  console.log('cádfks' + cartItems);
   return (
     <Helmet title="cart">
       <CommonSection title="Shopping Cart" />
